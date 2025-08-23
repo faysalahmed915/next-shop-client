@@ -41,13 +41,13 @@ export default function ProductsPage() {
                         <p className="text-gray-600 mb-4">{product.description}</p>
                         <p className="font-bold mb-4">${product.price}</p>
 
-                        {/* {product.image && (
+                        {product.image && (
                             <img
                                 src={`http://localhost:5000/uploads/${product.image}`}
                                 alt={product.name}
                                 className="w-full h-40 object-cover rounded mb-4"
                             />
-                        )} */}
+                        )}
 
                         <Link
                             href={`/products/${product._id}`}

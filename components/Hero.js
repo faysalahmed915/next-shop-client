@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link"
 import { useSession } from "next-auth/react"
-import Image from "next/image"
 
 export default function Hero() {
     const { data: session, status } = useSession()
@@ -54,7 +53,7 @@ export default function Hero() {
 
                 {/* Image / Illustration */}
                 <div className="mb-10 md:mb-0">
-                    <Image
+                    <img
                         src="https://i.ibb.co.com/C3RW9MNF/home.jpg" 
                         alt="Hero Illustration"
                         className="w-full max-w-md"

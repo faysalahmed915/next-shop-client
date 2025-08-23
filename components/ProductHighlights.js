@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import axios from "axios"
-import Image from "next/image"
 
 export default function ProductHighlights() {
     const [products, setProducts] = useState([])
@@ -12,7 +11,7 @@ export default function ProductHighlights() {
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const res = await axios.get("https://e-products-server.vercel.app/products")
+                const res = await axios.get("http://localhost:5000/products")
                 // Take only the first 8 products
                 setProducts(res.data.slice(0, 8))
             } catch (err) {
@@ -45,7 +44,7 @@ export default function ProductHighlights() {
                             <p className="font-bold mb-4">${product.price}</p>
 
                             {product.image && (
-                                <Image
+                                <img
                                     src={`https://e-products-server.vercel.app/uploads/${product.image}`}
                                     alt={product.name}
                                     className="w-full h-40 object-cover rounded mb-4"

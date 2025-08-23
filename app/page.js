@@ -5,8 +5,9 @@ import ProductHighlights from "@/components/ProductHighlights";
 export default function HomePage() {
   return (
     <div>
-      <Hero />
-      <ProductHighlights />
+      Home
+      {/* <Hero /> */}
+      {/* <ProductHighlights /> */}
     </div>
   )
 }

@@ -8,7 +8,7 @@ export default function Footer() {
 
                 {/* About */}
                 <div>
-                    <h3 className="text-xl font-bold mb-4">MyShop</h3>
+                    <h3 className="text-xl font-bold mb-4">NextShop</h3>
                     <p className="text-gray-300">
                         Your one-stop shop for amazing products. Quality, reliability, and convenience all in one place.
                     </p>
@@ -33,7 +33,7 @@ export default function Footer() {
                 {/* Contact */}
                 <div>
                     <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-                    <p className="text-gray-300">Email: support@myshop.com</p>
+                    <p className="text-gray-300">Email: support@nextshop.com</p>
                     <p className="text-gray-300">Phone: +1 234 567 890</p>
                 </div>
 

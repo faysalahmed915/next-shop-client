@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Link from "next/link"
-// import axios from "axios"
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import axios from "axios";
 
 export default function ProductsPage() {
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    // useEffect(() => {
-    //     async function fetchProducts() {
-    //         try {
-    //             const res = await axios.get("http://localhost:5000/products")
-    //             setProducts(res.data)
-    //         } catch (err) {
-    //             console.error(err)
-    //         } finally {
-    //             setLoading(false)
-    //         }
-    //     }
-    //     fetchProducts()
-    // }, [])
+    useEffect(() => {
+        async function fetchProducts() {
+            try {
+                const res = await axios.get("https://e-products-server.vercel.app/products");
+                setProducts(res.data);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchProducts();
+    }, []);
 
-    if (loading) return <p className="text-center py-10">Loading products...</p>
+    if (loading) return <p className="text-center py-10">Loading products...</p>;
 
     if (products.length === 0)
-        return <p className="text-center py-10">No products found.</p>
+        return <p className="text-center py-10">No products found.</p>;
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -35,19 +35,18 @@ export default function ProductsPage() {
                 {products.map((product) => (
                     <div
                         key={product._id}
-                        className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition"
+                        className="bg-white p-6 border-2 border-b-blue-600 rounded-lg shadow hover:shadow-lg transition"
                     >
                         <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
                         <p className="text-gray-600 mb-4">{product.description}</p>
                         <p className="font-bold mb-4">${product.price}</p>
 
-                        {product.image && (
-                            <img
-                                src={`http://localhost:5000/uploads/${product.image}`}
-                                alt={product.name}
-                                className="w-full h-40 object-cover rounded mb-4"
-                            />
-                        )}
+                        {/* Placeholder if no image */}
+                        {/* {!product.image && (
+                            <div className="w-full h-40 bg-gray-200 flex items-center justify-center rounded mb-4 text-gray-500">
+                                No Image
+                            </div>
+                        )} */}
 
                         <Link
                             href={`/products/${product._id}`}
@@ -59,5 +58,5 @@ export default function ProductsPage() {
                 ))}
             </div>
         </div>
-    )
+    );
 }

@@ -11,7 +11,7 @@ export default function ProductHighlights() {
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const res = await axios.get("http://localhost:5000/products")
+                const res = await axios.get("https://next-shop-server-alpha.vercel.app/products")
                 // Take only the first 8 products
                 setProducts(res.data.slice(0, 8))
             } catch (err) {

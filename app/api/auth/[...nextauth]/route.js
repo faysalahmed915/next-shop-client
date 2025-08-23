@@ -2,22 +2,22 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 
 export const authOptions = {
-    providers: [
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET
-        })
-    ],
-    pages: {
-        signIn: "/login",
-        signOut: "/login"
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
+  secret: process.env.NEXTAUTH_SECRET, // ✅ important in production
+  pages: {
+    signIn: "/login", // custom login page
+  },
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      // Always go to /products after login
+      return "/products"
     },
-    callbacks: {
-        async redirect({ url, baseUrl }) {
-            // After login, redirect to /products
-            return "/products"
-        }
-    }
+  },
 }
 
 const handler = NextAuth(authOptions)

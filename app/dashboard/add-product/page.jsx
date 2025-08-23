@@ -32,7 +32,7 @@ export default function AddProductPage() {
         setLoading(true);
 
         try {
-            await axios.post("https://e-products-server.vercel.app/products", formData);
+            await axios.post("https://next-shop-server-alpha.vercel.app/products", formData);
 
             toast.success("✅ Product added successfully!");
             setFormData({ name: "", price: "", description: "" });

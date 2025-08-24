@@ -15,7 +15,7 @@ export default function ProductDetailsPage() {
     useEffect(() => {
         async function fetchProduct() {
             try {
-                const res = await axios.get(`https://e-products-server.vercel.app/products`)
+                const res = await axios.get(`https://next-shop-server-alpha.vercel.app/products`)
                 const found = res.data.find((p) => p._id === id)
                 setProduct(found || null)
             } catch (err) {
@@ -47,7 +47,7 @@ export default function ProductDetailsPage() {
 
             {product.image && (
                 <img
-                    src={`https://e-products-server.vercel.app/uploads/${product.image}`}
+                    src={product.image}
                     alt={product.name}
                     className="w-96 h-80 object-cover rounded mb-6"
                 />

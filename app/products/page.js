@@ -11,8 +11,9 @@ export default function ProductsPage() {
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const res = await axios.get("https://e-products-server.vercel.app/products");
+                const res = await axios.get("https://next-shop-server-alpha.vercel.app/products");
                 setProducts(res.data);
+                console.log(res.data);
             } catch (err) {
                 console.error(err);
             } finally {

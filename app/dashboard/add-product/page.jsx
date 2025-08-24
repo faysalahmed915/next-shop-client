@@ -13,6 +13,7 @@ export default function AddProductPage() {
     const [formData, setFormData] = useState({
         name: "",
         price: "",
+        image: "",
         description: "",
     });
     const [loading, setLoading] = useState(false);
@@ -32,10 +33,10 @@ export default function AddProductPage() {
         setLoading(true);
 
         try {
-            await axios.post("https://next-shop-server-alpha.vercel.app/products", formData);
+            await axios.post("http://localhost:5000/products", formData);
 
             toast.success("✅ Product added successfully!");
-            setFormData({ name: "", price: "", description: "" });
+            setFormData({ name: "", price: "", image: "", description: "" });
 
             // Redirect after 1 second to allow toast to be visible
             setTimeout(() => {
@@ -70,6 +71,15 @@ export default function AddProductPage() {
                     name="price"
                     placeholder="Price"
                     value={formData.price}
+                    onChange={handleChange}
+                    className="w-full border p-2 rounded"
+                    required
+                />
+                <input
+                    type="url"
+                    name="image"
+                    placeholder="Image URL"
+                    value={formData.image}
                     onChange={handleChange}
                     className="w-full border p-2 rounded"
                     required
